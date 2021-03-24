@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+
+  <input class="w3-input w3-border w3-padding" type="text" placeholder="Buscar productos..." id="inputbuscarproducto" onkeyup="buscarproducto()">
+
+  <table class="w3-table-all w3-margin-top" id="tbal">
+    <tr>
+      <th style="width:60%;">Name</th>
+      <th style="width:40%;">Country</th>
+   <th style="width:40%;">nose</th>
+<th style="width:60%;">Name</th>
+<th style="width:40%;">Country</th>
+<th style="width:40%;">nose</th>
+<th style="width:40%;">nose</th>
+    </tr>
+    <tr>
+      <td>Alfreds Futterkiste</td>
+      <td>Germany</td>
+<td>nol</td>
+<td>kilo</td>
+<td>hujgsuf</td>
+<td>dufhisuhfudf</td>
+<td>dfuhsiudfhusdfuashfuyetswfrus</td>
+    </tr>
+    <tr>
+      <td>Berglunds snabbkop</td>
+      <td>Sweden</td>
+<td>nol</td>
+<td>kilo</td>
+<td>hujgsuf</td>
+<td>dufhisuhfudf</td>
+<td>dfuhsiudfhusdfuashfuyetswfrus</td>
+    </tr>
+    <tr>
+      <td>Island Trading</td>
+      <td>UK</td>
+<td>nol</td>
+<td>kilo</td>
+<td>hujgsuf</td>
+<td>dufhisuhfudf</td>
+<td>dfuhsiudfhusdfuashfuyetswfrus</td>
+    </tr>
+    <tr>
+      <td>Koniglich Essen</td>
+      <td>Germany</td>
+<td>nol</td>
+<td>kilo</td>
+<td>hujgsuf</td>
+<td>dufhisuhfudf</td>
+<td>dfuhsiudfhusdfuashfuyetswfrus</td>
+    </tr>
+    <tr>
+      <td>Laughing Bacchus Winecellars</td>
+      <td>Canada</td>
+<td>nol</td>
+<td>kilo</td>
+<td>hujgsuf</td>
+<td>dufhisuhfudf</td>
+<td>dfuhsiudfhusdfuashfuyetswfrus</td>
+    </tr>
+    <tr>
+      <td>Magazzini Alimentari Riuniti</td>
+      <td>Italy</td>
+<td>nol</td>
+<td>kilo</td>
+<td>hujgsuf</td>
+<td>dufhisuhfudf</td>
+<td>dfuhsiudfhusdfuashfuyetswfrus</td>
+    </tr>
+    <tr>
+      <td>North/South</td>
+      <td>UK</td>
+<td>nol</td>
+<td>kilo</td>
+<td>hujgsuf</td>
+<td>dufhisuhfudf</td>
+<td>dfuhsiudfhusdfuashfuyetswfrus</td>
+    </tr>
+    <tr>
+      <td>Paris specialites</td>
+      <td>France</td>
+<td>nol</td>
+<td>kilo</td>
+<td>hujgsuf</td>
+<td>dufhisuhfudf</td>
+<td>dfuhsiudfhusdfuashfuyetswfrus</td>
+    </tr>
+  </table>
+
+
+<script>
+function buscarproducto() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("inputbuscarproducto");
+
+  filter = input.value.toUpperCase();
+  table = document.getElementById("tbal");
+
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+body{
+height: 100vh;
+}
+.conteniido /*Esta opcion es para crear un scroll dentro de los contenidos
+Para hacerlo con un estilo de APP NUBE*/
+{
+overflow: auto;
+}
+.contenedordetablaproductos
+{
+overflow: auto;
+}
+.btnsinpading
+{
+padding-left: 5px;
+padding-right: 5px;
+padding-top: 0;
+padding-bottom: 0;
+}
+.iconoojo{position:relative; bottom: -6px;}
+.margindistribuidor{margin-right: 11px;}
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+   padding: 20px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: brown;
+  border-radius: 1px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: brown;
+}
+::-webkit-scrollbar-thumb:active {
+  background: orange;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}

@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Panaderia Realidad</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="estilos.css">
+      <link rel="shortcut icon" href="favicon.ico">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <body>
+
+      <!-- Sidebar -->
+      <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none; width: 250px" id="mySidebar">
+         <button onclick="w3_close()" class="w3-bar-item w3-large">Cerrar &times;</button>
+         <div class="w3-container w3-margin-bottom w3-red">
+            <img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle  w3-margin" style="width:60px">
+            <p>Administrador</p><br>
+         </div>
+         <a href="#" class="w3-bar-item w3-button w3-hover-blue" onclick="openContenido('productos')" >Productos</a>
+         <a href="#" class="w3-bar-item w3-button w3-hover-green" onclick="openContenido('usuarios')" >Usuarios</a>
+         <a href="#" class="w3-bar-item w3-button w3-hover-yellow" onclick="openContenido('distribuidores')" >Distribuidores</a>
+         <a href="#" class="w3-bar-item w3-button">Luagares</a>
+         <a href="#" class="w3-bar-item w3-button">Dinero</a>
+         <a href="#" class="w3-bar-item w3-button">Ventas</a>
+      </div>
+      <!-- Sidebar -->
+
+      <!-- Header  PRINCIPAL-->
+      <div class="w3-brown cabeza w3-mobile">
+        <button class="w3-button w3-brown w3-hover-yellow w3-xlarge w3-display-topleft"  onclick="w3_open()">☰</button>
+        <div class="w3-container w3-center ">
+          <h1 id="cerhos">Panaderia Imperio App</h1>
+        </div>
+      </div>
+      <!-- Header  PRINCIPAL-->
+
+      <!-- CONENIDOO PRODUCTOS  -->
+      <div class="w3-card-4 w3-margin conteniido" id="productos" style="width:97.4%; height: 85%;">
+
+         <!-- HEADER DEL CONENIDOO PRODUCTOS  -->
+          <header class="w3-container w3-blue">
+            <div class="w3-row">
+              <div class=" w3-container w3-twothird">
+                <h1>Productos</h1>
+              </div>
+              <div class="w3-container w3-third">
+                <button class="w3-btn w3-circle w3-red w3-right w3-margin" onclick="abrirregistro('modalregistroproductos')">+</button>
+              </div>
+            </div>
+          </header>
+         <!-- HEADER DEL CONENIDOO  PRODUCTOS-->
+
+         <!-- INPUT PARA BUSCAR EN PRODUCTOS-->
+         <div class="w3-container w3-light-blue w3-padding w3-margin-bottom">
+         <input class="w3-input w3-border w3-padding" type="text" placeholder="Buscar productos..."
+         id="inputbuscarproducto" onkeyup="buscarproducto()">
+         </div>
+         <!-- INPUT PARA BUSCAR EN PRODUCTOS-->
+
+         <!--CONENIDOO  PRODUCTOS EN TARJETAS-->
+          <div class="w3-container contenedordetablaproductos">
+           <table class="w3-table-all w3-hoverable w3-margin-bottom" id="tabladeproductos">
+
+             <thead>
+               <tr class="w3-blue">
+                  <th width="60px"><b>Id</b></th><!-- Filas con titulos -->
+                  <th width="300px"><b>Nombre</b></th>
+                  <th width="300px"><b>Precio Entrada</b></th>
+                  <th width="300px"><b>Precio salida</b></th>
+                  <th width="300px"><b>Cantidad</b></th>
+                  <th width="300px"><b>Iva</b></th>
+                  <th width="300px"><b>Fecha Ingreso</b></th>
+                  <th width="300px"><b>Fecha Vencimiento</b></th>
+                  <th width="300px"><b>Lugar</b></th>
+                  <th width="300px"><b>Estado</b></th>
+                  <th width="300px"><b>Distribuidor</b></th>
+                  <th width="60px"><a href='#' class='edibtn'>editar</a></th>
+                  <th width="60px">Borrar</th>
+               </tr>
+             </thead>
+
+             <tbody class="tablaconproductos">
+
+             </tbody>
+           </table>
+       </div>
+         <!--CONENIDOO  PRODUCTOS EN TARJETAS-->
+
+         <!-- Modal Para las registro -->
+         <div id="modalregistroproductos" class="w3-modal registrosmodales">
+
+            <div class="w3-modal-content w3-card-4">
+               <header class="w3-container w3-blue">
+                 <span onclick="document.getElementById('modalregistroproductos').style.display='none'"
+                 class="w3-button w3-display-topright">&times;</span>
+                 <h2>Registro de Productos</h2>
+               </header>
+
+               <div class="w3-container w3-margin">
+                  <div class="w3-container w3-pale-green mensajeenviado" style="display: none">
+                     <p>Registro Enviado</p>
+                  </div>
+                  <div class="w3-container w3-red mensajenoenviado" style="display: none">
+                     <p>Registro  NO Enviado</p>
+                  </div>
+                  <form class="w3-container formulario-registro-productos">
+
+                     <div class="w3-row">
+
+                       <div class="w3-quarter w3-container">
+                         <label for="Protxt_id">Id</label>
+                         <input class="w3-input" type="text" id="Protxt_id">
+                       </div>
+
+                       <div class="w3-rest w3-container">
+                         <label for="Protxt_nombre">Detalle</label>
+                         <input class="w3-input" type="text" id="Protxt_nombre">
+                       </div><br>
+
+                        <div class="w3-third w3-container ">
+                         <label for="Protxt_precioentrada">Precio Entrada</label>
+                         <input class="w3-input" type="number" id="Protxt_precioentrada">
+                        </div>
+
+                        <div class="w3-third w3-container">
+                         <label for="Protxt_preciosalida">Precio Salida</label>
+                         <input class="w3-input" type="number" id="Protxt_preciosalida">
+                        </div>
+
+                        <div class="w3-third w3-container">
+                           <label for="Protxt_cantidad">Cantidad</label>
+                           <input class="w3-input" type="number" id="Protxt_cantidad">
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                          <div class="w3-third w3-container ">
+                         <label for="Protxt_iva">Iva</label>
+                        <input class="w3-input" type="number" id="Protxt_iva">
+                       </div>
+
+                       <div class="w3-third w3-container">
+                         <label for="Protxt_fechaingreso">Fecha Ingreso</label>
+                        <input class="w3-input" type="date" id="Protxt_fechaingreso">
+                       </div>
+
+                       <div class="w3-third w3-container">
+                           <label for="Protxt_fechavencimiento">Fecha Vencimiento</label>
+                           <input class="w3-input" type="date" id="Protxt_fechavencimiento">
+                       </div>
+
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                         <div class="w3-third w3-container ">
+                         <label for="Protxt_estado">Estado</label>
+                        <input class="w3-input" type="text" id="Protxt_estado">
+                       </div>
+                        <br>
+
+                       <div class="w3-third w3-container">
+                         <select class="w3-select" name="option" id="Protxt_lugar">
+
+                        </select>
+                       </div>
+
+                       <div class="w3-third w3-container">
+                         <select class="w3-select" name="option" id="Protxt_distribuidor">
+
+                         </select>
+                       </div>
+                     </div>
+
+                     </div>
+
+                     <footer class="w3-container w3-blue">
+                        <div class="w3-center">
+                           <button class="w3-btn w3-red w3-margin w3-center-align" id="btn-registro" type="submit" name="button">Enviar</button>
+                        </div>
+                     </footer>
+                  </form>
+          </div>
+         </div>
+         <!-- Modal Para las registro -->
+
+         <!-- Modal Para las registro-editar -->
+         <div id="modaleditarproductos" class="w3-modal editarmodales">
+
+            <div class="w3-modal-content w3-card-4">
+               <header class="w3-container w3-blue">
+                 <span onclick="document.getElementById('modaleditarproductos').style.display='none'"
+                 class="w3-button w3-display-topright">&times;</span>
+                 <h2>Editar de Productos</h2>
+               </header>
+
+               <div class="w3-container w3-margin">
+                  <form class="w3-container formulario-editar-productos">
+
+                     <div class="w3-row">
+
+                       <div class="w3-quarter w3-container">
+                         <label for="Editar_Protxt_id">Id</label>
+                         <input class="w3-input" type="text" id="Editar_Protxt_id">
+                       </div>
+
+                       <div class="w3-rest w3-container">
+                         <label for="Editar_Protxt_nombre">Detalle</label>
+                         <input class="w3-input" type="text" id="Editar_Protxt_nombre">
+                       </div><br>
+
+                        <div class="w3-third w3-container ">
+                         <label for="Editar_Protxt_precioentrada">Precio Entrada</label>
+                         <input class="w3-input" type="number" id="Editar_Protxt_precioentrada">
+                        </div>
+
+                        <div class="w3-third w3-container">
+                         <label for="Editar_Protxt_preciosalida">Precio Salida</label>
+                         <input class="w3-input" type="number" id="Editar_Protxt_preciosalida">
+                        </div>
+
+                        <div class="w3-third w3-container">
+                           <label for="Editar_Protxt_cantidad">Cantidad</label>
+                           <input class="w3-input" type="number" id="Editar_Protxt_cantidad">
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                          <div class="w3-third w3-container ">
+                         <label for="Editar_Protxt_iva">Iva</label>
+                        <input class="w3-input" type="number" id="Editar_Protxt_iva">
+                       </div>
+
+                       <div class="w3-third w3-container">
+                         <label for="Editar_Protxt_fechaingreso">Fecha Ingreso</label>
+                        <input class="w3-input" type="text" id="Editar_Protxt_fechaingreso">
+                       </div>
+
+                       <div class="w3-third w3-container">
+                           <label for="Editar_Protxt_fechavencimiento">Fecha Vencimiento</label>
+                           <input class="w3-input" type="text" id="Editar_Protxt_fechavencimiento">
+                       </div>
+
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                         <div class="w3-third w3-container ">
+                         <label for="Editar_Protxt_estado">Estado</label>
+                        <input class="w3-input" type="text" id="Editar_Protxt_estado">
+                       </div>
+                        <br>
+
+                       <div class="w3-third w3-container">
+                         <select class="w3-select" name="option" id="Editar_Protxt_lugar">
+                        </select>
+                       </div>
+
+                       <div class="w3-third w3-container">
+                         <select class="w3-select" name="option" id="Editar_Protxt_distribuidor">
+                         </select>
+                       </div>
+                     </div>
+
+                     </div>
+
+                     <footer class="w3-container w3-blue">
+                        <div class="w3-center">
+                           <button class="w3-btn w3-red w3-margin w3-center-align" id="btn-registro-editar" type="submit" name="button">Editar</button>
+                        </div>
+                     </footer>
+                  </form>
+          </div>
+         </div>
+         <!-- Modal Para las registro-editar -->
+
+      </div>
+      <!-- CONENIDOO PRODUCTOS -->
+
+
+      <!-- CONENIDOO USUARIOS  -->
+      <div class="w3-card-4 w3-margin conteniido" id="usuarios" style="width:97.4%; height: 85%; display:none;">
+
+         <!-- HEADER DEL CONENIDOO PRODUCTOS  -->
+          <header class="w3-container w3-green">
+            <div class="w3-row">
+              <div class=" w3-container w3-twothird">
+                <h1>Usuarios</h1>
+              </div>
+              <div class="w3-container w3-third">
+                <button class="w3-btn w3-circle w3-red w3-right w3-margin" id="btnusuarios" onclick="abrirregistro('modalregistrousuarios')">+</button>
+              </div>
+            </div>
+          </header>
+         <!-- HEADER DEL CONENIDOO  PRODUCTOS-->
+
+         <!--CONENIDOO  PRODUCTOS EN TARJETAS-->
+          <div class="w3-container">
+             <div class="w3-row tarjetass"></div>
+          </div>
+         <!--CONENIDOO  PRODUCTOS EN TARJETAS-->
+
+         <!-- Modal Para las registro -->
+         <div id="modalregistrousuarios" class="w3-modal registrosmodales">
+
+            <div class="w3-modal-content w3-card-4">
+               <header class="w3-container w3-green">
+                 <span onclick="document.getElementById('modalregistrousuarios').style.display='none'"
+                 class="w3-button w3-display-topright">&times;</span>
+                 <h2>Registro de Usuarios</h2>
+               </header>
+
+               <div class="w3-container w3-margin">
+                  <form class="w3-container">
+
+                     <div class="w3-row">
+
+                       <div class="w3-quarter w3-container">
+                         <label for="txt_id">Id</label>
+                         <input class="w3-input" type="text" id="txt_id">
+                       </div>
+
+                       <div class="w3-rest w3-container">
+                         <label for="txt_nombre">Detalle</label>
+                         <input class="w3-input" type="text" id="txt_nombre">
+                       </div><br>
+
+                        <div class="w3-third w3-container ">
+                         <label for="txt_nombre">Precio Entrada</label>
+                         <input class="w3-input" type="number" id="txt_nombre">
+                        </div>
+
+                        <div class="w3-third w3-container">
+                         <label for="txt_nombre">Precio Salida</label>
+                         <input class="w3-input" type="number" id="txt_nombre">
+                        </div>
+
+                        <div class="w3-third w3-container">
+                           <label for="txt_nombre">Cantidad</label>
+                           <input class="w3-input" type="number" id="txt_nombre">
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                          <div class="w3-third w3-container ">
+                         <label for="txt_nombre">Iva</label>
+                        <input class="w3-input" type="number" id="txt_nombre">
+                       </div>
+
+                       <div class="w3-third w3-container">
+                         <label for="txt_nombre">Fecha Ingreso</label>
+                        <input class="w3-input" type="date" id="txt_nombre">
+                       </div>
+
+                       <div class="w3-third w3-container">
+                           <label for="txt_nombre">Fecha Vencimiento</label>
+                           <input class="w3-input" type="date" id="txt_nombre">
+                       </div>
+
+
+                         <div class="w3-third w3-container ">
+                         <label for="txt_nombre">Estado</label>
+                        <input class="w3-input" type="text" id="txt_nombre">
+                       </div>
+
+                       <div class="w3-third w3-container">
+                         <select class="w3-select" name="option">
+                           <option value="" disabled selected>Selecione lugar</option>
+                           <option value="1">Option 1</option>
+                           <option value="2">Option 2</option>
+                           <option value="3">Option 3</option>
+                        </select>
+                       </div>
+
+                       <div class="w3-third w3-container">
+                         <select class="w3-select" name="option">
+                           <option value="" disabled selected>Selecione distribuidor</option>
+                           <option value="1">Option 1</option>
+                           <option value="2">Option 2</option>
+                           <option value="3">Option 3</option>
+                         </select>
+                       </div>
+                     </div>
+               </form>
+            </div>
+
+            <footer class="w3-container w3-green">
+               <div class="w3-center">
+                  <button class="w3-btn w3-red w3-margin w3-center-align" id="btn-registro" type="button" name="button">Enviar</button>
+               </div>
+            </footer>
+
+          </div>
+         </div>
+         <!-- Modal Para las registro -->
+
+          <footer class="w3-container w3-green">
+            <h5>Footer</h5>
+          </footer>
+      </div>
+      <!-- CONENIDOO USUARIOS -->
+
+      <!-- CONENIDOO DISTRIBUIDORES -->
+      <div class="w3-card-4 w3-margin conteniido" id="distribuidores" style="width:97.4%; height: 85%; display:none;">
+
+         <!-- HEADER DEL CONENIDOO DISTRIBUIDORES  -->
+          <header class="w3-container w3-yellow">
+            <div class="w3-row">
+              <div class=" w3-container w3-twothird">
+                <h1>Distribuidores</h1>
+              </div>
+              <div class="w3-container w3-third">
+                <button class="w3-btn w3-circle w3-red w3-right w3-margin" id="btndistribuidores" onclick="abrirregistro('modalregistrodistribuidores')">+</button>
+              </div>
+            </div>
+          </header>
+         <!-- HEADER DEL CONENIDOO  DISTRIBUIDORES-->
+
+         <!--CONENIDOO  DISTRIBUIDORES EN TARJETAS-->
+          <div class="w3-container">
+             <div class="w3-row tarjetass"></div>
+          </div>
+         <!--CONENIDOO  PRODUCTOS EN TARJETAS-->
+
+         <!-- Modal Para las registro de distribuidores-->
+         <div id="modalregistrodistribuidores" class="w3-modal registrosmodales">
+
+            <div class="w3-modal-content w3-card-4">
+               <header class="w3-container w3-yellow">
+                 <span onclick="document.getElementById('modalregistrodistribuidores').style.display='none'"
+                 class="w3-button w3-display-topright">&times;</span>
+                 <h2>Registro de Distribuidores</h2>
+               </header>
+
+               <div class="w3-container w3-margin">
+                  <form class="w3-container">
+
+                     <div class="w3-row">
+
+                       <div class="w3-quarter w3-container">
+                         <label for="txt_id">Id</label>
+                         <input class="w3-input" type="text" id="txt_id">
+                       </div>
+
+                       <div class="w3-rest w3-container">
+                         <label for="txt_nombre">Detalle</label>
+                         <input class="w3-input" type="text" id="txt_nombre">
+                       </div><br>
+
+                        <div class="w3-third w3-container ">
+                         <label for="txt_nombre">Precio Entrada</label>
+                         <input class="w3-input" type="number" id="txt_nombre">
+                        </div>
+
+                        <div class="w3-third w3-container">
+                         <label for="txt_nombre">Precio Salida</label>
+                         <input class="w3-input" type="number" id="txt_nombre">
+                        </div>
+
+                        <div class="w3-third w3-container">
+                           <label for="txt_nombre">Cantidad</label>
+                           <input class="w3-input" type="number" id="txt_nombre">
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                          <div class="w3-third w3-container ">
+                         <label for="txt_nombre">Iva</label>
+                        <input class="w3-input" type="number" id="txt_nombre">
+                       </div>
+
+                       <div class="w3-third w3-container">
+                         <label for="txt_nombre">Fecha Ingreso</label>
+                        <input class="w3-input" type="date" id="txt_nombre">
+                       </div>
+
+                       <div class="w3-third w3-container">
+                           <label for="txt_nombre">Fecha Vencimiento</label>
+                           <input class="w3-input" type="date" id="txt_nombre">
+                       </div>
+
+
+                         <div class="w3-third w3-container ">
+                         <label for="txt_nombre">Estado</label>
+                        <input class="w3-input" type="text" id="txt_nombre">
+                       </div>
+
+                       <div class="w3-third w3-container">
+                         <select class="w3-select" name="option">
+                           <option value="" disabled selected>Selecione lugar</option>
+                           <option value="1">Option 1</option>
+                           <option value="2">Option 2</option>
+                           <option value="3">Option 3</option>
+                        </select>
+                       </div>
+
+                       <div class="w3-third w3-container">
+                         <select class="w3-select" name="option">
+                           <option value="" disabled selected>Selecione distribuidor</option>
+                           <option value="1">Option 1</option>
+                           <option value="2">Option 2</option>
+                           <option value="3">Option 3</option>
+                         </select>
+                       </div>
+                     </div>
+               </form>
+            </div>
+
+            <footer class="w3-container w3-yellow">
+               <div class="w3-center">
+                  <button class="w3-btn w3-red w3-margin w3-center-align" id="btn-registro" type="button" name="button">Enviar</button>
+               </div>
+            </footer>
+
+          </div>
+         </div>
+         <!-- Modal Para las registro de distribuidores -->
+
+          <footer class="w3-container w3-yellow">
+            <h5>Footer</h5>
+          </footer>
+      </div>
+      <!-- CONENIDOO DISTRIBUIDORES -->
+
+
+   <!-- AQUI VA EL PROXIMO CONTENIDO -->
+
+
+   <!-- DIV de notificaciones -->
+   <div class="w3-panel w3-black w3-display-bottomleft w3-margin w3-animate-zoom w3-wide" id="notificacion" style="display: none"></div>
+   <!-- DIV de notificaciones -->
+
+   <!-- MODAL DE CONFIRMACION DE ELIMINAR -->
+     <div id="modal-confirmar-eliminar" class="w3-modal" >
+       <div class="w3-modal-content w3-card-4" style="width: 50%">
+         <header class="w3-container w3-red">
+           <span onclick="document.getElementById('modal-confirmar-eliminar').style.display='none'"
+           class="w3-button w3-display-topright">&times;</span>
+           <h2>Eliminar</h2>
+         </header>
+         <div class="w3-container">
+            <div class="w3-center w3-center">
+               <h2 id="nameproductoaeliminar"></h2>
+            </div>
+         </div>
+         <footer class="w3-container w3-red">
+           <div class="w3-container w3-margin w3-center" id="aquiboton">
+         <!-- <div class="w3-green w3-btn" id="si" name="button">Confirmar</div>
+         <div class="w3-red w3-btn" id="no" name="button">Cancelar</div> -->
+            </div>
+         </footer>
+       </div>
+     </div>
+   <!-- MODAL DE CONFIRMACION DE ELIMINAR -->
+
+   <script>
+
+   function openContenido(nombreContenido)
+   {
+      /*Para que esta funcion se haga realidad hay que tener en cuenta
+      dos importeantes aspectos:
+
+      1) En el boton con la funcion, debe llevar como parametros el id
+      del modal que se deasea abrir.
+
+      2) Todo los modales que se van a utilizar deben llevar la misma clase
+      en este caso es registrosmodales.
+         */
+       var i;
+       var x = document.getElementsByClassName("conteniido");
+         for (i = 0; i < x.length; i++)
+            {
+             x[i].style.display = "none";
+            }
+       document.getElementById(nombreContenido).style.display = "block";
+       document.getElementById("mySidebar").style.display = "none";
+   }
+
+   //Fucniones para abrir y cerrar las opciones
+   function w3_open()
+   {
+      document.getElementById("mySidebar").style.display = "block";
+   }
+
+   function w3_close()
+   {
+      document.getElementById("mySidebar").style.display = "none";
+   }
+   //Fucniones para abrir y cerrar las opciones
+
+
+
+   //Funcion para abrir modal de regitros
+      function abrirregistro(nombreModal)
+      {
+          var i;
+          var x = document.getElementsByClassName("registrosmodales");
+          for (i = 0; i < x.length; i++)
+            {
+             x[i].style.display = "none";
+            }
+         document.getElementById(nombreModal).style.display='block';
+            /*Para que esta funcion se haga realidad hay que tener en cuenta
+            dos importeantes aspectos:
+
+            1) En el boton con la funcion, debe llevar como parametros el id
+            del modal que se deasea abrir.
+
+            2) Todo los modales que se van a utilizar deben llevar la misma clase
+            en este caso es registrosmodales.
+            */
+      }
+   //Funcion para abrir modal de regitros
+
+   //Funcion para abrir modal de regitros
+      function abrireditar(nombreModal)
+      {
+          var i;
+          var x = document.getElementsByClassName("editarmodales");
+          for (i = 0; i < x.length; i++)
+            {
+             x[i].style.display = "none";
+            }
+         document.getElementById(nombreModal).style.display='block';
+         /*Para que esta funcion se haga realidad hay que tener en cuenta
+         dos importeantes aspectos:
+
+         1) En el boton con la funcion, debe llevar como parametros el id
+         del modal que se deasea abrir.
+
+         2) Todo los modales que se van a utilizar deben llevar la misma clase
+         en este caso es registrosmodales.
+         */
+
+         //Funcion para abrir modal de regitros
+         //OJO COMO SACO EL ID PARA IDENTIFICAR El boton que presion OJO OJO OJO
+
+         // //Funcion para abrir modal de tablas. POR REPARAR
+         //    function abrirtabla(e)
+         //    {//Paso el parametro this a e.
+         // var x = e.id; //Le digo cual es el id del btn que presiono
+         // alert(x);
+         //    document.getElementById('modaltabla').style.display='block';
+         //    document.getElementById('nombreid').innerHTML = x;// Comieng soon....
+         //    }
+         // //Funcion para abrir modal de tablas. POR REPARAR
+      }
+
+      function buscarproducto()
+      {
+         // Con la sigiente funcion busca en la tabla los que no coincidan lo oculta.
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("inputbuscarproducto");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tabladeproductos");
+        tr = table.getElementsByTagName("tr");
+
+         for (i = 0; i < tr.length; i++)
+         {
+          td = tr[i].getElementsByTagName("td")[1]; // Esta es la posicion que buscara
+         //Como el nombre esta en la poscion 1, yo coloque uno
+          if (td)
+            {
+               if (td.innerHTML.toUpperCase().indexOf(filter) > -1)
+               {
+                 tr[i].style.display = "";
+               }
+               else
+               {
+                 tr[i].style.display = "none";
+               }
+            }
+         }
+      }
+
+      function editarproducto()
+      {
+
+   $('.mero').click(function(){
+
+   alert("hola mierda");
+   });
+      }
+
+      function eliminarproducto(e)
+      {
+         var id =null;
+         id = e.id; //Le digo cual es el id del btn que presiono
+         var arr = id.split(",");//Saco los parmetro con JSON con comas
+         //arr[] ----> Son la pociones, en la posicion 0 esta id. en la
+         // 1 esta detalle.
+         document.getElementById('nameproductoaeliminar').innerHTML =
+          "Seguro que quiere eliminar: "+"<br><br>"+arr[1];
+         // alert(arr[1]);
+         document.getElementById('aquiboton').innerHTML =
+         "<div class='w3-green w3-btn' id='btnsi'>Confirmar</div> <div class='w3-red w3-btn' id='btnno'>Cancelar</div>";
+         /*Con la Instrucion de arriba agrego los botones de aceptar y Cancelar
+         porque antes los tenia en html y cada vez que hacia click en aceptar
+         guardaba los elementos como en un array y no me servia, solo nesecitaba
+         el elemento que seleccione, entonces opte por crearlos con innerHTML y
+         despues borrarlos, para asi vaciar los datos de los botones, y que no
+         genere un array de datos*/
+
+         document.getElementById('modal-confirmar-eliminar').style.display='block';
+
+         $("#btnsi").click(function(){
+         //   alert("presiono holaa"+arr[0]+".."+arr[1]);
+         var parametros =
+         {
+            'borrar'   : arr[0]
+         }
+
+         $.ajax({
+          type        : 'POST',
+            //Tipo de dato, Aqui va POST o GET
+          url         : 'borrar.php',
+            // Url de archovo.php
+          data        :  parametros,
+            /* Esta esla variable JSON donde estan todos
+            los archivos*/
+
+          success: function (data) {
+            /*success me informa que cuando todo se halla
+            echo que hago....-
+            document.getElementById("respuesta")
+            .innerHTML = "bien Hecho";*/
+         document.getElementById('notificacion').style.display='block';
+         document.getElementById('notificacion').innerHTML ="Se ha eliminado";
+         $("#notificacion").fadeOut(5200);
+            $(".tablaconproductos").load("traerproducto.php");
+          },
+          error: function (r) {
+               alert("Error del servidor");
+            }
+         });
+
+           document.getElementById('aquiboton').innerHTML ="";//Aqui vacio los
+           //datos borrando los botones
+           document.getElementById('modal-confirmar-eliminar').style.display='none';
+         });
+
+
+         $("#btnno").click(function(){
+         //   alert("presiono noo");
+         document.getElementById('modal-confirmar-eliminar').style.display='none';
+         });
+      }
+
+
+   </script>
+   <script src="funcion.js"></script>
+
+   </body>
+</html>
